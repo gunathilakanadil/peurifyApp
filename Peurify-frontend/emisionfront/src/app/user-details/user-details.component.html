@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <title>Peurify</title>
+    <style>
+        .blur-bg {
+            backdrop-filter: saturate(180%) blur(20px);
+            background-color: rgba(255, 255, 255, 0.72);
+        }
+        .hero-text {
+            background: linear-gradient(to right, #1a1a1a, #4a4a4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .scale-hover {
+            transition: transform 0.3s ease;
+        }
+        .scale-hover:hover {
+            transform: scale(1.02);
+        }
+        .container-custom {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header - Made wider -->
+    <header class="fixed w-full z-50 blur-bg">
+        <nav class="container-custom mx-auto">
+            <div class="flex items-center justify-between h-20 px-8"> <!-- Increased header height -->
+                <div class="flex items-center space-x-4"> <!-- Reduced spacing -->
+                    <!-- Further enlarged image size -->
+                    <img src="https://i.ibb.co/Hx2QKyb/5371003-84-1.png" alt="Peurify Logo" class="h-12 w-12"> <!-- Updated size -->
+                    <!-- Enlarged and bold title -->
+                    <a href="/" class="text-3xl font-bold text-gray-900" style="font-family: 'Baguette Script', cursive;">Peurify</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/home" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                    <a href="/users" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">New Complaint</a>
+                    <a href="#help" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Help</a>
+                    <a href="#" class="px-6 py-2 text-sm text-white bg-black rounded-full hover:bg-gray-800 transition-colors">Sign In</a>
+                </div>
+                
+                <button class="md:hidden text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <br><br><br><br><br><br>
+  <!-- Main Content Section -->
+  <div class="container">
+    <div *ngIf="user" class="profile-card">
+      <!-- Profile Image Section -->
+      <div class="profile-image-container">
+        <img src="https://i.ibb.co/mvnQ0Ts/emppfp.jpg"
+             alt="User Profile" 
+             class="profile-image animated">
+      </div>
+      
+      <!-- User Details Section -->
+      <div class="profile-details">
+        <div class="detail-item">
+          <strong>ID:</strong> {{ user.id }}
+        </div>
+        <div class="detail-item">
+          <strong>Name:</strong> {{ user.name }}
+        </div>
+        <div class="detail-item">
+          <strong>NIC:</strong> {{ user.nic }}
+        </div>
+        <div class="detail-item">
+          <strong>Phone Number:</strong> {{ user.phoneNumber }}
+        </div>
+  
+        <!-- Rewards Section with a label and badge -->
+        <div class="reward-section">
+          <strong>Rewards:</strong>
+          <span class="reward-badge">{{ user.rewards }}</span>
+        </div>
+        
+        <button class="update-btn" (click)="update(user.id)">Update Details</button>
+      </div>
+    </div>
+  </div>
+  
+   <footer class="border-t border-gray-100 bg-white">
+        <div class="container-custom mx-auto px-8 py-8">
+            <p class="text-center text-sm text-gray-500">&copy; 2024 Peurify. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
